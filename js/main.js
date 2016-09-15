@@ -1,38 +1,46 @@
 function validateForm(){
-	var nom = document.getElementById("name").value;
-	if( nom == null || nom.length == 0 || nom == ""){
-	  alert("Escribe un nombre.");
-	}else if ( /[0-9]/.test(nom)){
-		alert("No ingrese números.")
-	}else if ( /^[a-z]/.test(nom.charAt(0)) ){
-		alert ("Escriba el primer caracter en mayúscula.")
-	}
-
+	var nombre = document.getElementById("name").value;
+    var contrasenia = document.getElementById("input-password").value;
 	var apellido = document.getElementById("lastname").value;
-	if( apellido == null || apellido.length == 0 || apellido == ""){
-	  alert("Escribe tu apellido.");
+    var correo = document.getElementById("input-email").value;
+	var opcion = document.querySelector("select").value;
+
+	if (nombre.length == 0 && apellido == 0 && correo == 0 && contraseña == 0) {
+		alert ("Complete los campos.");
+	} else {
+
+	if(nombre == null || nombre.length == 0 || nombre == ""){
+		alert("Escribe tu nombre.");
+	}else if ( /[0-9]/.test(nombre)){
+		alert("No ingrese números.")
+	}else if ( /^[a-z]/.test(nombre.charAt(0))){
+		alert ("Escriba el primer caracter de su nombre en mayúscula.")
+	}
+	
+	if(apellido == null || apellido.length == 0 || apellido == ""){
+		alert("Escribe tu apellido.");
 	}else if ( /[0-9]/.test(apellido)){
 		alert("No ingrese números.")
 	}else if ( /^[a-z]/.test(apellido.charAt(0)) ){
-		alert ("Escriba el primer caracter en mayúscula.")
-	}
-
-	var emailRegex=/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    cor = document.getElementById("input-email").value;
-    if(!emailRegex.test(cor)) {
-        alert("Ingrese un correo válido.");
-    };
-    
-    var contr = document.getElementById("input-password").value;
-    if (contr.length <= 6 || contr.length == 0 || contr == "123456" || contr == "98754" || contr == "password" ) {
-  		alert("Contraseña no válida.");
-  		return false; 
+		alert ("Escriba el primer caracter de su apellido en mayúscula.")
 	}
 	
-	var opcion = document.getElementById("checkbox").selectedIndex;
-	if( opcion == null || opcion == "" ) {
-	alert("Por favor, seleccione una opción en checkbox.");
-	}
+	var emailRegex=/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if(!emailRegex.test(correo)) {
+        alert("Ingrese un correo válido.");
+    };
 
-	return true;    
+	if(contrasenia == null || contrasenia.length == 0) {
+        alert("Ingresa una contraseña.");
+    } else if (contrasenia.length < 6){
+        alert("Contraseña no válida, debe tener como mínimo 6 caracteres.");
+    } 
+    if (contrasenia == "123456" || contrasenia == "098754" || contrasenia == "password"){
+    	alert ("'123456', '098754' y 'password' no son contraseñas válidas.");
+    };
+	
+    if(opcion == 0) {
+    	alert("Elige una opción.");
+    }    
+	};
 }
